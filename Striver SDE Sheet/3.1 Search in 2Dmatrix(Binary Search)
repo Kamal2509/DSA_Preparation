@@ -1,0 +1,44 @@
+class Solution {
+    Boolean findrow(int[][] matrix, int k){
+        int row= matrix.length;
+        int col= matrix[0].length;
+        int m=0; int n=row-1;
+        
+        while(m<=n){
+            int mid=(m+n)/2;
+ if(matrix[mid][0]==k) return true;
+ if(matrix[mid][col-1]==k) return true;
+ if(k>matrix[mid][0] && k< matrix[mid][col-1]){
+    return binarysearch(matrix, mid,k);
+ }
+ if(k<matrix[mid][0])
+ {
+n=mid-1;
+
+ } 
+ if(k>matrix[mid][col-1]){
+m=mid+1;
+ } 
+ 
+    }
+    return false;
+    }
+Boolean binarysearch(int[][] matrix,int rownumber, int k){
+         System.out.println("hello");
+         int i=0;
+         int j=matrix[0].length-1;
+       
+while(i<=j){
+    int  rowmid=(i+j)/2;
+    if(matrix[rownumber][rowmid]==k) return true;
+if(matrix[rownumber][rowmid]>k) j=rowmid-1;
+if(matrix[rownumber][rowmid]<k) i=rowmid+1;
+}
+  return false;      
+         
+     }
+    public boolean searchMatrix(int[][] matrix, int target) {
+      return findrow(matrix,target); 
+        
+    }
+}

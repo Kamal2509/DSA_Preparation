@@ -1,0 +1,26 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        int count = 0;
+        int candidate = 0;
+        
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        
+        return candidate;
+    }
+}
+
+// we have three options to solve such kind problems
+
+1. sort the array and find n/2 index element.
+2. using hashmap and save count, and found maximum value. 
+3. using Moore voting algorithm as written above. it states as =>if there is a majority element in an array, it will always remain in the lead.
