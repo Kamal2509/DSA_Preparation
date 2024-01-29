@@ -1,0 +1,23 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        Map<Integer,Integer> map= new HashMap<>();
+
+     // Iterate through the input array to count element occurrences
+    for(int i=0;i<nums.length;i++){
+      map.put(nums[i], map.getOrDefault(nums[i],0)+1);
+       } 
+     List<Integer> result=new ArrayList<>();
+     int limit=nums.length/3;
+
+     // check elemets which have count more than n/3
+     for(int key:map.keySet()){
+         int number=key;
+         int count=map.get(key);
+
+         if(count>limit){
+             result.add(key);
+         }
+     }
+       return result;
+    }
+}
